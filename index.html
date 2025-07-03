@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TapType – Smarter Typing, No Shift Key Needed</title>
+
+  <link rel="icon" href="images/logo.png">
+
+  <meta name="description" content="Experience a smarter way to type with TapType. Tap for lowercase, hold for UPPERCASE. A lightweight, powerful Windows utility that streamlines your workflow without ever needing the Shift key again.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+   /* Enhanced navbar animation */
+#navbar {
+  transition: all 0.4s ease, transform 0.4s ease;
+}
+
+#navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+#navbar.slide-up {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+    /* Prevent scrolling when mobile menu is open */
+    body.overflow-hidden {
+      overflow: hidden;
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2TZFDZJYFZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2TZFDZJYFZ');
+</script>
+</head>
+ 
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+  <!-- Header -->
+  <header>
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <div class="flex-shrink-0">
+            <a href="#home" class="text-2xl font-bold text-slate-900">
+              TapType<span class="text-sky-500">.</span>
+            </a>
+          </div>
+          
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#features" class="text-slate-600 hover:text-sky-500 transition-colors duration-200 font-medium">Features</a>
+            <a href="#how-it-works" class="text-slate-600 hover:text-sky-500 transition-colors duration-200 font-medium">How It Works</a>
+            <a href="about.html" class="text-slate-600 hover:text-sky-500 transition-colors duration-200 font-medium">About</a>
+            <a href="doc.html" class="text-slate-600 hover:text-sky-500 transition-colors duration-200 font-medium">Documentation</a>
+
+          </div>
+          
+          <!-- Desktop CTA & Mobile Menu Button -->
+          <div class="flex items-center">
+             <a href="./TapTypeSetup.exe" download class="hidden md:inline-block bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold shadow-md hover:bg-sky-600 transition-all duration-300 hover:shadow-lg">
+              Download for Windows
+            </a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden ml-4 p-2 text-slate-600 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500">
+                <span class="sr-only">Open main menu</span>
+                <!-- Hamburger Icon -->
+                <svg id="hamburger-icon" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+                <!-- Close Icon -->
+                 <svg id="close-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu, show/hide based on menu state -->
+      <div id="mobile-menu" class="hidden md:hidden">
+        <div class="h-screen w-screen bg-white pt-12 pb-3 space-y-1 text-center">
+            <a href="#features" class="block px-3 py-4 text-2xl font-medium text-slate-600 hover:text-sky-500 hover:bg-slate-50 mobile-link">Features</a>
+            <a href="#how-it-works" class="block px-3 py-4 text-2xl font-medium text-slate-600 hover:text-sky-500 hover:bg-slate-50 mobile-link">How It Works</a>
+            <a href="about.html" class="block px-3 py-4 text-2xl font-medium text-slate-600 hover:text-sky-500 hover:bg-slate-50 mobile-link">About</a>
+            <a href="doc.html" class="block px-3 py-4 text-2xl font-medium text-slate-600 hover:text-sky-500 hover:bg-slate-50 mobile-link">Documentation</a>
+
+            <div class="pt-12">
+                <a href="./TapTypeSetup.exe" download class="inline-block w-3/4 bg-sky-500 text-white px-8 py-4 text-lg rounded-lg font-bold shadow-lg hover:bg-sky-600">
+                  ⬇️ Download TapType.
+                </a>
+            </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 md:pt-0">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Text content (appears first on mobile) -->
+        <div class="text-center md:text-left">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900">
+            The Last Time You'll
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-600">Ever Need the Shift Key.</span>
+          </h1>
+          <p class="mt-6 text-lg md:text-xl text-slate-600 max-w-xl mx-auto md:mx-0">
+            Welcome to a fluid, faster way of typing. TapType is a smart Windows utility that distinguishes between a quick tap (lowercase) and a brief hold (UPPERCASE). Boost your productivity and type more intuitively.
+          </p>
+          <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <a href="./TapTypeSetup.exe" download class="inline-block bg-sky-500 text-white px-8 py-4 text-lg rounded-lg font-bold shadow-lg hover:bg-sky-600 hover:scale-105 transform transition-all duration-300">
+              ⬇️ Download TapType. Now
+            </a>
+            <a href="#features" class="inline-block bg-sky-100 text-slate-800 px-8 py-4 text-lg rounded-lg font-bold shadow-md hover:bg-sky-200 transform transition-all duration-300">
+              Learn More
+            </a>
+          </div>
+        </div>
+        <!-- Lottie Animation (appears second on mobile) -->
+        <div class="flex justify-center items-center">
+          <div class="w-full max-w-sm h-80 sm:h-96 rounded-2xl shadow-2xl overflow-hidden border-4 border-sky-100 bg-white flex items-center justify-center">
+            <div id="typingAnim" class="w-full h-full"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 md:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-sky-500 font-semibold tracking-wide uppercase">Why TapType.?</p>
+        <h2 class="mt-2 text-3xl font-extrabold text-slate-900 sm:text-4xl">A Typing Experience Built for Flow</h2>
+        <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-500">
+          TapType is more than a utility; it's a fundamental improvement to how you interact with your keyboard.
+        </p>
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10">
+          <!-- Feature 1 -->
+          <div class="bg-slate-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <div class="inline-flex items-center justify-center h-12 w-12 rounded-lg bg-sky-100 text-sky-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-slate-900">Intuitive Control</h3>
+            <p class="mt-2 text-base text-slate-600">Your fingers already know the difference between a tap and a press. TapType simply listens. Tap for 'a', hold for 'A'. It's that natural.</p>
+          </div>
+          <!-- Feature 2 -->
+          <div class="bg-slate-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <div class="inline-flex items-center justify-center h-12 w-12 rounded-lg bg-sky-100 text-sky-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-slate-900">Seamless Integration</h3>
+            <p class="mt-2 text-base text-slate-600">TapType runs silently in your system tray. It starts with Windows and stays out of your way. Toggle it on or off with a single click.</p>
+          </div>
+          <!-- Feature 3 -->
+          <div class="bg-slate-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <div class="inline-flex items-center justify-center h-12 w-12 rounded-lg bg-sky-100 text-sky-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2.25 2.25 0 003.182 0l-7.24-7.24a.75.75 0 00-1.06 0L8.84 14.25a.75.75 0 01-1.06 0l-2.24-2.24a.75.75 0 00-1.061 0l-2.24 2.24a.75.75 0 000 1.06l4.5 4.5a.75.75 0 001.06 0l2.24-2.24a.75.75 0 011.06 0l2.24 2.24a.75.75 0 001.06 0z" /></svg>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-slate-900">Feather-Light Performance</h3>
+            <p class="mt-2 text-base text-slate-600">Engineered for efficiency, TapType uses less than 5MB of RAM. You get all the power without any performance cost to your system.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <!-- ===== START: UPDATED VIDEO SECTION ===== -->
+<section id="video-demo" class="py-20 md:py-24 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <p class="text-sky-500 font-semibold tracking-wide uppercase">A Quick Look</p>
+    <h2 class="mt-2 text-3xl font-extrabold text-slate-900 sm:text-4xl">See TapType in Action</h2>
+    <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-500">
+      Words can only go so far. Watch this short demo to see how TapType will truly change your workflow.
+    </p>
+
+    <!-- Video Player Container -->
+    <div id="video-container" class="relative mt-16 max-w-4xl mx-auto rounded-2xl shadow-2xl overflow-hidden cursor-pointer group">
+      <!-- Video Thumbnail (will be replaced on click) -->
+      <img src="https://img.youtube.com/vi/QOR5MLIS7Kk/maxresdefault.jpg" 
+           alt="TapType Demo Video Thumbnail"
+           class="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-105 pointer-events-none">
+
+      <!-- Play Button Overlay -->
+      <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 transition-all duration-300 group-hover:bg-opacity-20 pointer-events-none">
+        <div class="h-20 w-20 lg:h-24 lg:w-24 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30 transform transition-transform group-hover:scale-110 pointer-events-none">
+          <svg class="h-10 w-10 lg:h-12 lg:w-12 text-white ml-1 pointer-events-none" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 6V18L18 12L7 6Z"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== END: UPDATED VIDEO SECTION ===== -->
+
+    <!-- ===== END: NEW VIDEO SECTION ===== -->
+
+    <!-- How It Works Section -->
+    <!-- NOTE: Changed background to bg-white for better visual flow -->
+    <section id="how-it-works" class="py-20 md:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <p class="text-sky-500 font-semibold tracking-wide uppercase">Get Started in Seconds</p>
+          <h2 class="mt-2 text-3xl font-extrabold text-slate-900 sm:text-4xl">Effortless Setup</h2>
+          <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-500">Go from download to smart typing in under a minute. Here's how simple it is.</p>
+        </div>
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          <div class="bg-slate-50 rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+            <div class="text-4xl font-extrabold text-sky-300">01</div>
+            <h3 class="mt-4 font-bold text-lg text-slate-900">Download the Installer</h3>
+            <p class="mt-2 text-slate-600">Click the download button to get the `TapTypeInstaller.exe` file. It's safe and verified.</p>
+          </div>
+          <div class="bg-slate-50 rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+            <div class="text-4xl font-extrabold text-sky-300">02</div>
+            <h3 class="mt-4 font-bold text-lg text-slate-900">Run & Install</h3>
+            <p class="mt-2 text-slate-600">Open the downloaded file and click "Install". The setup is lightning-fast and requires no configuration.</p>
+          </div>
+          <div class="bg-slate-50 rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+            <div class="text-4xl font-extrabold text-sky-300">03</div>
+            <h3 class="mt-4 font-bold text-lg text-slate-900">Find in System Tray</h3>
+            <p class="mt-2 text-slate-600">TapType lives in your system tray. Right-click to toggle or exit.</p>
+          </div>
+          <div class="bg-slate-50 rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+            <div class="text-4xl font-extrabold text-sky-300">04</div>
+            <h3 class="mt-4 font-bold text-lg text-slate-900">Start Smart Typing</h3>
+            <p class="mt-2 text-slate-600">Open any app and try it out. Tap for lowercase, hold for UPPERCASE.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <!-- Footer -->
+<footer class="bg-white border-t border-slate-200">
+  <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center space-y-4">
+    <p class="text-slate-500">© 2025 TapType • Designed and built by NOVA MINDS</p>
+
+    <!-- Social Links -->
+    <div class="flex justify-center items-center space-x-4">
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/sohamkhot75/" target="_blank" rel="noopener noreferrer"
+         class="text-slate-600 hover:text-sky-500 flex items-center transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1 4.98 2.12 4.98 3.5zM0 8.5h5V24H0V8.5zm7.5 0h4.7v2.11h.07c.66-1.25 2.27-2.58 4.67-2.58 5 0 5.91 3.29 5.91 7.57V24h-5v-6.95c0-1.66-.03-3.8-2.32-3.8-2.33 0-2.69 1.82-2.69 3.7V24h-5V8.5z"/>
+        </svg>
+        LinkedIn
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/novaminds05?igsh=MTllYzhrYWY2Zmg4Mg==" target="_blank" rel="noopener noreferrer"
+         class="text-slate-600 hover:text-pink-500 flex items-center transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.336 3.608 1.31.975.975 1.248 2.242 1.31 3.608.058 1.266.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.336 2.633-1.31 3.608-.975.975-2.242 1.248-3.608 1.31-1.266.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.336-3.608-1.31-.975-.975-1.248-2.242-1.31-3.608C2.175 15.647 2.163 15.268 2.163 12s.012-3.584.07-4.85c.062-1.366.336-2.633 1.31-3.608C4.518 2.499 5.785 2.226 7.15 2.163 8.416 2.105 8.796 2.093 12 2.093zm0-2.163C8.74 0 8.332.013 7.052.07 5.64.129 4.396.422 3.29 1.53c-1.108 1.106-1.4 2.35-1.46 3.762C1.013 6.92 1 7.328 1 12s.013 5.08.07 6.358c.06 1.412.352 2.656 1.46 3.763 1.106 1.108 2.35 1.4 3.762 1.46C8.332 22.987 8.74 23 12 23s3.668-.013 4.948-.07c1.412-.06 2.656-.352 3.762-1.46 1.108-1.106 1.4-2.35 1.46-3.762.057-1.278.07-1.686.07-6.358s-.013-5.08-.07-6.358c-.06-1.412-.352-2.656-1.46-3.762C19.604.422 18.36.129 16.948.07 15.668.013 15.26 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.882 0 1.44 1.44 0 012.882 0z"/>
+        </svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+
+  <script src="https://unpkg.com/lottie-web@latest/build/player/lottie.min.js"></script>
+  
+  <script>
+    // Lottie Animation
+    lottie.loadAnimation({
+      container: document.getElementById('typingAnim'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'https://assets3.lottiefiles.com/packages/lf20_qp1q7mct.json'
+    });
+    
+    // Navbar scroll effect
+    let lastScrollTop = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.scrollY;
+
+  if (currentScroll > 50) {
+    navbar.classList.add('scrolled');
+
+    if (currentScroll > lastScrollTop) {
+      // Scrolling down
+      navbar.classList.add('slide-up');
+    } else {
+      // Scrolling up
+      navbar.classList.remove('slide-up');
+    }
+  } else {
+    navbar.classList.remove('scrolled');
+    navbar.classList.remove('slide-up');
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+
+
+    // --- Mobile Menu Toggle Script ---
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    const toggleMenu = () => {
+        mobileMenu.classList.toggle('hidden');
+        hamburgerIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden');
+    };
+
+    mobileMenuButton.addEventListener('click', toggleMenu);
+
+    // Close menu when a link is clicked
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (!mobileMenu.classList.contains('hidden')) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // --- YouTube Video Player Script ---
+    const videoContainer = document.getElementById('video-container');
+
+  videoContainer.addEventListener('click', () => {
+    const videoId = 'QOR5MLIS7Kk'; // your YouTube ID
+
+    // Create a wrapper that maintains 16:9 aspect ratio
+    const wrapper = document.createElement('div');
+    wrapper.className = 'relative w-full pb-[56.25%]'; // 16:9 ratio
+
+    // Create the iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    iframe.className = 'absolute top-0 left-0 w-full h-full';
+    iframe.frameBorder = '0';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+
+    // Append iframe into wrapper, then into container
+    wrapper.appendChild(iframe);
+    videoContainer.innerHTML = ''; // clear thumbnail
+    videoContainer.appendChild(wrapper);
+    videoContainer.classList.remove('cursor-pointer');
+  });
+
+  </script>
+<script>
+	window.fwSettings={
+	'widget_id':1130000000133
+	};
+	!function(){if("function"!=typeof window.FreshworksWidget){var n=function(){n.q.push(arguments)};n.q=[],window.FreshworksWidget=n}}() 
+</script>
+<script type='text/javascript' src='https://ind-widget.freshworks.com/widgets/1130000000133.js' async defer></script>
+</body>
+</html>
